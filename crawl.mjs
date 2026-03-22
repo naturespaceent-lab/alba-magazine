@@ -194,16 +194,18 @@ function formatDate(dateStr) {
 // ============================================================
 
 function backdateArticles(articles) {
-  const startDate = new Date(2026, 0, 1); // Jan 1, 2026
   const endDate = new Date(2026, 2, 22);  // Mar 22, 2026
-  const totalDays = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
+  // Spread articles evenly, newest first at position 0
+  // Weight toward recent dates: first articles = March, last articles = January
+  const totalDays = 80; // ~Jan 1 to Mar 22
 
   for (let i = 0; i < articles.length; i++) {
-    const daysAgo = Math.floor(Math.random() * totalDays);
-    const hoursOffset = Math.floor(Math.random() * 24);
+    // Linear spread: article 0 = most recent, last article = oldest
+    const fraction = i / Math.max(articles.length - 1, 1);
+    const daysAgo = Math.floor(fraction * totalDays) + Math.floor(Math.random() * 3);
     const d = new Date(endDate);
     d.setDate(d.getDate() - daysAgo);
-    d.setHours(hoursOffset, Math.floor(Math.random() * 60), 0, 0);
+    d.setHours(8 + Math.floor(Math.random() * 14), Math.floor(Math.random() * 60), 0, 0);
     articles[i].pubDate = d;
     articles[i].formattedDate = formatDate(d.toISOString());
   }
@@ -286,79 +288,103 @@ const TITLE_TEMPLATES = {
   comeback: [
     '{artist} Regresan con Todo: Lo Que Sabemos de Su Comeback',
     'El Esperado Regreso de {artist} Ya Es una Realidad',
-    '{artist} Sorprenden con un Comeback Que No Esperabamos',
+    '{artist} Sorprenden con un Comeback Que No Esper\u00e1bamos',
+    '{artist} Vuelven con Fuerza: An\u00e1lisis de Su Comeback',
+    'El Comeback de {artist} Que Tiene Locos a los Fans',
   ],
   release: [
     '{artist} Lanzan Nuevo Sencillo y Arrasan en las Plataformas',
     'Lo Nuevo de {artist}: Una Joya Musical Que Debes Escuchar',
-    '{artist} Presentan Su Ultimo Trabajo Discografico',
+    '{artist} Presentan Su \u00daltimo Trabajo Discogr\u00e1fico',
+    'Nuevo \u00c1lbum de {artist}: Primera Escucha y Reacci\u00f3n',
+    '{artist} Estrenan M\u00fasica y las Plataformas Explotan',
   ],
   concert: [
-    'Cronica: {artist} Incendian el Escenario en un Show Inolvidable',
+    'Cr\u00f3nica: {artist} Incendian el Escenario en un Show Inolvidable',
     '{artist} en Vivo: La Experiencia Que Todo Fan Merece',
     'Gira de {artist}: Fechas, Ciudades y Todo Lo Que Necesitas Saber',
+    '{artist} Llenan el Estadio: Cr\u00f3nica de una Noche M\u00e1gica',
   ],
   award: [
-    '{artist} Se Llevan el Premio Mayor en la Gala del Ano',
-    'Noche de Gloria para {artist}: Resumen de la Premiacion',
+    '{artist} Se Llevan el Premio Mayor en la Gala del A\u00f1o',
+    'Noche de Gloria para {artist}: Resumen de la Premiaci\u00f3n',
     '{artist} Hacen Historia con Su Victoria en los Premios',
+    'Los Premios Sonr\u00eden a {artist}: An\u00e1lisis de Su Triunfo',
   ],
   fashion: [
-    'El Estilo de {artist} Que Esta Marcando Tendencia',
-    'Moda K-Pop: Los Looks Mas Iconicos de {artist}',
-    '{artist} y la Alta Costura: Una Relacion Perfecta',
+    'El Estilo de {artist} Que Est\u00e1 Marcando Tendencia',
+    'Moda K-Pop: Los Looks M\u00e1s Ic\u00f3nicos de {artist}',
+    '{artist} y la Alta Costura: Una Relaci\u00f3n Perfecta',
+    '{artist} Deslumbran con Su \u00daltimo Look de Alfombra Roja',
   ],
   variety: [
-    'Los Momentos Mas Divertidos de {artist} en Television',
+    'Los Momentos M\u00e1s Divertidos de {artist} en Televisi\u00f3n',
     '{artist} Conquistan la Pantalla con Su Carisma',
     '{artist} en Programas de Variedades: Imperdible',
+    'La Aparici\u00f3n de {artist} en TV Que Se Hizo Viral',
   ],
   sns: [
-    '{artist} Rompen las Redes con Su Ultima Publicacion',
+    '{artist} Rompen las Redes con Su \u00daltima Publicaci\u00f3n',
     'Lo Que {artist} Compartieron en Sus Redes y Se Hizo Viral',
     'Tendencia: {artist} Dominan las Redes Sociales',
+    '{artist} Publican Contenido Exclusivo y los Fans Enloquecen',
   ],
   collab: [
-    '{artist} Unen Fuerzas en una Colaboracion Epica',
+    '{artist} Unen Fuerzas en una Colaboraci\u00f3n \u00c9pica',
     'La Sorprendente Alianza de {artist} con una Estrella Global',
-    '{artist} Anuncian Colaboracion Que Emociona a los Fans',
+    '{artist} Anuncian Colaboraci\u00f3n Que Emociona a los Fans',
+    'Nueva Colaboraci\u00f3n de {artist}: Todos los Detalles',
   ],
   debut: [
     'Debut Explosivo: {artist} Llegan Para Quedarse',
-    'Conoce a {artist}: La Nueva Sensacion del K-Pop',
+    'Conoce a {artist}: La Nueva Sensaci\u00f3n del K-Pop',
     '{artist} Debutan y Prometen Revolucionar la Escena',
+    'El Impactante Debut de {artist} Sacude la Industria',
   ],
   chart: [
-    '{artist} Conquistan las Listas de Exitos a Nivel Mundial',
-    'Los Numeros No Mienten: {artist} Dominan los Charts',
-    '{artist} Logran Record Historico en las Listas',
+    '{artist} Conquistan las Listas de \u00c9xitos a Nivel Mundial',
+    'Los N\u00fameros No Mienten: {artist} Dominan los Charts',
+    '{artist} Logran R\u00e9cord Hist\u00f3rico en las Listas',
+    '{artist} Arrasan en Streaming: Cifras de V\u00e9rtigo',
   ],
   mv: [
-    'Analisis del Nuevo MV de {artist}: Arte Visual en Estado Puro',
+    'An\u00e1lisis del Nuevo MV de {artist}: Arte Visual en Estado Puro',
     '{artist} Estrenan Video Musical y Las Vistas Se Disparan',
     'El Nuevo MV de {artist} Tiene un Mensaje Oculto Que Debes Conocer',
+    'Videoclip de {artist}: Est\u00e9tica y Simbolismo al Detalle',
   ],
   interview: [
     '{artist} Hablan Sin Filtros: Lo Que Revelaron en Su Entrevista',
     'Exclusiva: {artist} Comparten Sus Planes y Emociones',
     '{artist} Se Abren como Nunca en una Entrevista Especial',
+    'Entrevista \u00cdntima con {artist}: Confesiones y Revelaciones',
   ],
   general: [
     'La Noticia del K-Pop Que Todo Fan Debe Conocer',
-    'Lo Mas Importante del Mundo K-Pop Esta Semana',
+    'Lo M\u00e1s Importante del Mundo K-Pop Esta Semana',
     'ALBA Te Cuenta: Las Novedades del K-Pop',
+    'Resumen Semanal: Lo Mejor del K-Pop en Espa\u00f1ol',
+    'Panorama K-Pop: Las Noticias M\u00e1s Relevantes del D\u00eda',
   ],
 };
 
 const NO_ARTIST_TEMPLATES = [
   'La Noticia del K-Pop Que Todo Fan Debe Conocer',
-  'Lo Mas Importante del Mundo K-Pop Esta Semana',
+  'Lo M\u00e1s Importante del Mundo K-Pop Esta Semana',
   'ALBA Te Cuenta: Las Novedades del K-Pop',
-  'El K-Pop No Para: Resumen de las Ultimas Noticias',
-  'Esto Es Lo Que Esta Pasando en el Mundo K-Pop',
-  'ALBA Seleccion: Lo Mejor de la Semana en K-Pop',
+  'El K-Pop No Para: Resumen de las \u00daltimas Noticias',
+  'Esto Es Lo Que Est\u00e1 Pasando en el Mundo K-Pop',
+  'ALBA Selecci\u00f3n: Lo Mejor de la Semana en K-Pop',
   'Noticias Frescas del K-Pop para los Fans Latinos',
-  'El Mundo del K-Pop en Espanol: Lo Que No Te Puedes Perder',
+  'El Mundo del K-Pop en Espa\u00f1ol: Lo Que No Te Puedes Perder',
+  'Resumen Diario: Todo lo Que Pasa en el K-Pop',
+  'Las Noticias del K-Pop Que Est\u00e1n Dando de Qu\u00e9 Hablar',
+  '\u00bfQu\u00e9 Hay de Nuevo en el K-Pop? ALBA Te Lo Explica',
+  'ALBA Informa: Actualizaci\u00f3n del Mundo K-Pop',
+  'La Semana en K-Pop: Lo Que Necesitas Saber',
+  'ALBA Destaca: Momentos Clave del K-Pop Reciente',
+  'El Pulso del K-Pop: Noticias y An\u00e1lisis del D\u00eda',
+  'Breve Repaso: Lo \u00daltimo del K-Pop en Espa\u00f1ol',
 ];
 
 // ---- Helper ----
@@ -451,17 +477,54 @@ function classifyTopic(title) {
   return 'general';
 }
 
+// ---- Title deduplication tracker ----
+const _usedTitles = new Set();
+
 function rewriteTitle(originalTitle, source) {
   const artist = extractArtist(originalTitle);
   const topic = classifyTopic(originalTitle);
 
   if (artist) {
     const templates = TITLE_TEMPLATES[topic] || TITLE_TEMPLATES.general;
-    const template = pickRandom(templates);
-    return template.replace(/\{artist\}/g, artist);
+    // Try all templates before falling back
+    const shuffled = [...templates].sort(() => Math.random() - 0.5);
+    for (const template of shuffled) {
+      const candidate = template.replace(/\{artist\}/g, artist);
+      if (!_usedTitles.has(candidate)) {
+        _usedTitles.add(candidate);
+        return candidate;
+      }
+    }
+    // All topic templates used — try other topics
+    for (const [otherTopic, otherTemplates] of Object.entries(TITLE_TEMPLATES)) {
+      if (otherTopic === topic) continue;
+      for (const template of otherTemplates) {
+        const candidate = template.replace(/\{artist\}/g, artist);
+        if (!_usedTitles.has(candidate)) {
+          _usedTitles.add(candidate);
+          return candidate;
+        }
+      }
+    }
+    // Last resort: append source for uniqueness
+    const fallback = `${artist}: ${pickRandom(templates).replace(/\{artist\}/g, artist)} (${source})`;
+    _usedTitles.add(fallback);
+    return fallback;
   }
 
-  return pickRandom(NO_ARTIST_TEMPLATES);
+  // No artist — try all NO_ARTIST_TEMPLATES
+  const shuffledNA = [...NO_ARTIST_TEMPLATES].sort(() => Math.random() - 0.5);
+  for (const candidate of shuffledNA) {
+    if (!_usedTitles.has(candidate)) {
+      _usedTitles.add(candidate);
+      return candidate;
+    }
+  }
+  // All used — generate unique variant
+  const base = pickRandom(NO_ARTIST_TEMPLATES);
+  const unique = `${base} [${source}]`;
+  _usedTitles.add(unique);
+  return unique;
 }
 
 // ============================================================
@@ -508,6 +571,7 @@ async function downloadArticleImages(articles) {
   let downloaded = 0;
   const BATCH = 8;
 
+  // Phase 1: Download real (non-picsum) images
   for (let i = 0; i < articles.length; i += BATCH) {
     const batch = articles.slice(i, i + BATCH);
     await Promise.allSettled(
@@ -523,7 +587,29 @@ async function downloadArticleImages(articles) {
       })
     );
   }
-  log(`  Downloaded ${downloaded}/${articles.length} images locally`);
+  log(`  Phase 1: Downloaded ${downloaded}/${articles.length} real images locally`);
+
+  // Phase 2: Download picsum fallback images for articles that still use external URLs
+  let picsumDownloaded = 0;
+  for (let i = 0; i < articles.length; i += BATCH) {
+    const batch = articles.slice(i, i + BATCH);
+    await Promise.allSettled(
+      batch.map(async (article, idx) => {
+        if (!article.image || !article.image.includes('picsum.photos')) return;
+        // Already has local image from phase 1
+        if (article.image.startsWith('images/')) return;
+        const safeName = `article-${i + idx}-picsum-${Date.now() % 100000}`;
+        const localPath = await downloadImage(article.image, safeName);
+        if (localPath) {
+          article.originalImage = article.image;
+          article.image = localPath;
+          picsumDownloaded++;
+        }
+      })
+    );
+  }
+  log(`  Phase 2: Downloaded ${picsumDownloaded} picsum fallback images locally`);
+  log(`  Total: ${downloaded + picsumDownloaded} images locally`);
 }
 
 // ============================================================
@@ -531,7 +617,7 @@ async function downloadArticleImages(articles) {
 // ============================================================
 
 const CATEGORY_COLORS = {
-  MUSICA: '#e74c3c',
+  'M\u00daSICA': '#e74c3c',
   ESTILO: '#9b59b6',
   CULTURA: '#2ecc71',
   'EN VIVO': '#3498db',
@@ -546,7 +632,7 @@ const CATEGORY_COLORS = {
 
 function displayCategory(category) {
   const lower = (category || '').toLowerCase();
-  if (lower.includes('music') || lower.includes('k-pop') || lower.includes('kpop')) return 'MUSICA';
+  if (lower.includes('music') || lower.includes('k-pop') || lower.includes('kpop')) return 'M\u00daSICA';
   if (lower.includes('fashion') || lower.includes('beauty') || lower.includes('style')) return 'ESTILO';
   if (lower.includes('drama') || lower.includes('culture') || lower.includes('movie') || lower.includes('film')) return 'CULTURA';
   if (lower.includes('concert') || lower.includes('tour') || lower.includes('live')) return 'EN VIVO';
@@ -556,7 +642,7 @@ function displayCategory(category) {
   if (lower.includes('collab')) return 'COLLAB';
   if (lower.includes('debut')) return 'DEBUT';
   if (lower.includes('chart')) return 'CHARTS';
-  return 'MUSICA';
+  return 'M\u00daSICA';
 }
 
 function categoryColor(displayCat) {
@@ -565,7 +651,7 @@ function categoryColor(displayCat) {
 
 function badgeClass(displayCat) {
   switch (displayCat) {
-    case 'MUSICA': case 'CHARTS': case 'COLLAB': return 'badge-musica';
+    case 'M\u00daSICA': case 'CHARTS': case 'COLLAB': return 'badge-musica';
     case 'ESTILO': case 'SOCIAL': return 'badge-estilo';
     case 'CULTURA': case 'DEBUT': return 'badge-cultura';
     case 'EN VIVO': case 'TV': return 'badge-envivo';
@@ -1017,20 +1103,35 @@ function rewriteArticleBody(articleContent, title) {
 
   const inlineImages = (articleContent?.images || []).slice(1, 4);
   const paragraphs = [];
+  const usedTexts = new Set();
+  const pickUnique = (arr) => {
+    const available = arr.filter(t => !usedTexts.has(t));
+    if (available.length === 0) return arr[Math.floor(Math.random() * arr.length)];
+    const picked = available[Math.floor(Math.random() * available.length)];
+    usedTexts.add(picked);
+    return picked;
+  };
+  const shuffleAndPickUnique = (arr, n) => {
+    const available = arr.filter(t => !usedTexts.has(t));
+    const shuffled = [...available].sort(() => Math.random() - 0.5);
+    const picked = shuffled.slice(0, Math.min(n, shuffled.length));
+    for (const p of picked) usedTexts.add(p);
+    return picked;
+  };
 
   if (artist) {
     const templates = BODY_TEMPLATES[topic] || BODY_TEMPLATES.general;
     const sub = (text) => text.replace(/\{artist\}/g, artist);
 
-    paragraphs.push({ type: 'intro', text: sub(pickRandom(templates.opening)) });
+    paragraphs.push({ type: 'intro', text: sub(pickUnique(templates.opening)) });
 
     const bgCount = targetParagraphs >= 10 ? 2 : 1;
-    for (const bg of shuffleAndPick(SHARED_PARAGRAPHS.background, bgCount)) {
+    for (const bg of shuffleAndPickUnique(SHARED_PARAGRAPHS.background, bgCount)) {
       paragraphs.push({ type: 'body', text: sub(bg) });
     }
 
     const analysisCount = targetParagraphs >= 10 ? 3 : 2;
-    for (const a of shuffleAndPick(templates.analysis, analysisCount)) {
+    for (const a of shuffleAndPickUnique(templates.analysis, analysisCount)) {
       paragraphs.push({ type: 'body', text: sub(a) });
     }
 
@@ -1039,12 +1140,12 @@ function rewriteArticleBody(articleContent, title) {
     }
 
     const detailCount = targetParagraphs >= 10 ? 2 : 1;
-    for (const d of shuffleAndPick(SHARED_PARAGRAPHS.detail, detailCount)) {
+    for (const d of shuffleAndPickUnique(SHARED_PARAGRAPHS.detail, detailCount)) {
       paragraphs.push({ type: 'body', text: sub(d) });
     }
 
     const reactionCount = targetParagraphs >= 10 ? 2 : 1;
-    for (const r of shuffleAndPick(SHARED_PARAGRAPHS.reaction, reactionCount)) {
+    for (const r of shuffleAndPickUnique(SHARED_PARAGRAPHS.reaction, reactionCount)) {
       paragraphs.push({ type: 'body', text: sub(r) });
     }
 
@@ -1052,17 +1153,17 @@ function rewriteArticleBody(articleContent, title) {
       paragraphs.push({ type: 'image', src: inlineImages[1] });
     }
 
-    paragraphs.push({ type: 'body', text: sub(pickRandom(SHARED_PARAGRAPHS.impact)) });
-    paragraphs.push({ type: 'closing', text: sub(pickRandom(templates.closing)) });
+    paragraphs.push({ type: 'body', text: sub(pickUnique(SHARED_PARAGRAPHS.impact)) });
+    paragraphs.push({ type: 'closing', text: sub(pickUnique(templates.closing)) });
 
   } else {
-    paragraphs.push({ type: 'intro', text: pickRandom(NO_ARTIST_BODY.opening) });
+    paragraphs.push({ type: 'intro', text: pickUnique(NO_ARTIST_BODY.opening) });
 
-    for (const bg of shuffleAndPick(SHARED_PARAGRAPHS.noArtist.background, 2)) {
+    for (const bg of shuffleAndPickUnique(SHARED_PARAGRAPHS.noArtist.background, 2)) {
       paragraphs.push({ type: 'body', text: bg });
     }
 
-    for (const a of shuffleAndPick(NO_ARTIST_BODY.analysis, 2)) {
+    for (const a of shuffleAndPickUnique(NO_ARTIST_BODY.analysis, 2)) {
       paragraphs.push({ type: 'body', text: a });
     }
 
@@ -1070,11 +1171,11 @@ function rewriteArticleBody(articleContent, title) {
       paragraphs.push({ type: 'image', src: inlineImages[0] });
     }
 
-    for (const d of shuffleAndPick(SHARED_PARAGRAPHS.noArtist.detail, 2)) {
+    for (const d of shuffleAndPickUnique(SHARED_PARAGRAPHS.noArtist.detail, 2)) {
       paragraphs.push({ type: 'body', text: d });
     }
 
-    for (const r of shuffleAndPick(SHARED_PARAGRAPHS.noArtist.reaction, 1)) {
+    for (const r of shuffleAndPickUnique(SHARED_PARAGRAPHS.noArtist.reaction, 1)) {
       paragraphs.push({ type: 'body', text: r });
     }
 
@@ -1082,8 +1183,8 @@ function rewriteArticleBody(articleContent, title) {
       paragraphs.push({ type: 'image', src: inlineImages[1] });
     }
 
-    paragraphs.push({ type: 'body', text: pickRandom(SHARED_PARAGRAPHS.noArtist.impact) });
-    paragraphs.push({ type: 'closing', text: pickRandom(NO_ARTIST_BODY.closing) });
+    paragraphs.push({ type: 'body', text: pickUnique(SHARED_PARAGRAPHS.noArtist.impact) });
+    paragraphs.push({ type: 'closing', text: pickUnique(NO_ARTIST_BODY.closing) });
   }
 
   return { paragraphs };
