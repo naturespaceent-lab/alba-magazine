@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esto Es Lo Que Esta Pasando en el Mundo K-Pop | ALBA</title>
+  <meta name="description" content="Esto Es Lo Que Esta Pasando en el Mundo K-Pop">
+  <meta property="og:title" content="Esto Es Lo Que Esta Pasando en el Mundo K-Pop | ALBA">
+  <meta property="og:image" content="../images/article-3-88505.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            headline: ['Oswald', 'system-ui', 'sans-serif'],
+            body: ['Poppins', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            alba: {
+              amber: '#f5a623',
+              red: '#e74c3c',
+              purple: '#9b59b6',
+              green: '#2ecc71',
+              blue: '#3498db',
+              text: '#2d2d2d',
+              meta: '#888888',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #333;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: #2d2d2d; text-decoration: none; transition: color 0.25s ease; }
+    a:hover { color: #f5a623; }
+    img { display: block; width: 100%; height: auto; object-fit: cover; }
+    ul, ol { list-style: none; }
+
+    /* ===== AMBER TOP LINE ===== */
+    .amber-topline { height: 4px; background: linear-gradient(90deg, #f5a623 0%, #e74c3c 50%, #f5a623 100%); }
+
+    /* ===== NAVIGATION ===== */
+    .site-nav {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .site-nav .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .site-logo {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: 0.12em;
+      color: #f5a623;
+      text-transform: uppercase;
+    }
+
+    .site-logo a { color: #f5a623; }
+    .site-logo a:hover { color: #e8951a; }
+
+    .nav-links { display: flex; align-items: center; gap: 0; }
+
+    .nav-links a {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 20px 18px;
+      color: #2d2d2d;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 18px;
+      right: 18px;
+      height: 3px;
+      background: #f5a623;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a:hover { color: #f5a623; }
+
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #2d2d2d; transition: transform 0.3s; }
+
+    /* ===== ARTICLE CONTAINER ===== */
+    .article-container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== BACK LINK ===== */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #888;
+      margin: 24px 0 12px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #f5a623; }
+
+    /* ===== ARTICLE HEADER ===== */
+    .article-header { margin-bottom: 32px; }
+
+    .article-category-badge {
+      display: inline-block;
+      color: #fff;
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 16px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+
+    .badge-musica { background: #e74c3c; }
+    .badge-estilo { background: #9b59b6; }
+    .badge-cultura { background: #2ecc71; }
+    .badge-envivo { background: #3498db; }
+    .badge-default { background: #f5a623; }
+
+    .article-title {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: #2d2d2d;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      color: #888;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .article-meta .meta-divider {
+      width: 4px;
+      height: 4px;
+      background: #ccc;
+      border-radius: 50%;
+    }
+
+    /* ===== HERO IMAGE ===== */
+    .article-hero {
+      margin: 24px 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .article-hero img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    /* ===== ARTICLE BODY ===== */
+    .article-body {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .article-body p {
+      margin-bottom: 20px;
+    }
+
+    .editorial-intro {
+      font-size: 18px;
+      line-height: 1.75;
+      color: #2d2d2d;
+      font-weight: 500;
+      border-left: 4px solid #f5a623;
+      padding-left: 20px;
+      margin-bottom: 28px;
+    }
+
+    .editorial-closing {
+      font-size: 16px;
+      font-style: italic;
+      color: #555;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+      margin-top: 28px;
+    }
+
+    .article-inline-image {
+      margin: 28px 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .article-inline-image img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    .article-body blockquote {
+      border-left: 4px solid #f5a623;
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: #fffaf0;
+      border-radius: 0 6px 6px 0;
+      font-style: italic;
+      color: #555;
+    }
+
+    .article-body a {
+      color: #f5a623;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .article-body a:hover { color: #e8951a; }
+
+    /* ===== SOURCE ATTRIBUTION ===== */
+    .source-attribution {
+      margin: 32px 0;
+      padding: 20px;
+      background: #fafafa;
+      border-radius: 8px;
+      border-left: 4px solid #f5a623;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .source-attribution a { color: #f5a623; font-weight: 500; }
+    .source-attribution a:hover { color: #e8951a; }
+
+    .read-original {
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    /* ===== PHOTO CREDIT ===== */
+    .photo-credit {
+      font-size: 12px;
+      color: #aaa;
+      text-align: right;
+      margin-top: 8px;
+    }
+
+    /* ===== RELATED ARTICLES ===== */
+    .related-section {
+      margin: 48px 0;
+      padding-top: 32px;
+      border-top: 2px solid #f5a623;
+    }
+
+    .related-title {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+      color: #2d2d2d;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .related-card {
+      display: block;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #f0f0f0;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .related-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .related-card .thumb { aspect-ratio: 16/9; overflow: hidden; }
+    .related-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    .related-card .related-body { padding: 14px; }
+
+    .related-card .related-category {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #f5a623;
+      margin-bottom: 6px;
+    }
+
+    .related-card h3 {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      line-height: 1.35;
+      color: #2d2d2d;
+      margin-bottom: 6px;
+    }
+
+    .related-card .date { font-size: 12px; color: #888; }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: #1a1a1a;
+      color: #aaa;
+      padding: 48px 0 32px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 32px;
+      border-bottom: 2px solid #f5a623;
+      margin-bottom: 24px;
+    }
+
+    .footer-logo {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      color: #f5a623;
+      letter-spacing: 0.12em;
+    }
+
+    .footer-social { display: flex; gap: 16px; }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      transition: all 0.3s;
+    }
+
+    .footer-social a:hover { border-color: #f5a623; color: #f5a623; }
+
+    .footer-copy { font-size: 12px; color: #666; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .article-title { font-size: 24px; }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-top { flex-direction: column; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Amber Top Line -->
+  <div class="amber-topline"></div>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <div class="site-logo"><a href="../index.html">ALBA</a></div>
+      <div class="nav-links">
+        <a href="../index.html#musica">Musica</a>
+        <a href="../index.html#estilo">Estilo</a>
+        <a href="../index.html#cultura">Cultura</a>
+        <a href="../index.html#envivo">En Vivo</a>
+      </div>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Article Content -->
+  <article>
+    <div class="article-container">
+
+      <a href="../index.html" class="back-link">
+        <iconify-icon icon="solar:arrow-left-linear" width="16"></iconify-icon>
+        Volver a ALBA
+      </a>
+
+      <div class="article-header">
+        <span class="article-category-badge badge-musica">MUSICA</span>
+        <h1 class="article-title">Esto Es Lo Que Esta Pasando en el Mundo K-Pop</h1>
+        <div class="article-meta">
+          <span>21 de marzo de 2026</span>
+          <span class="meta-divider"></span>
+          <span>ALBA Redaccion</span>
+        </div>
+      </div>
+
+      <div class="article-hero">
+        <img src="../images/article-3-88505.jpg" alt="Esto Es Lo Que Esta Pasando en el Mundo K-Pop" width="760" height="428" loading="eager" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/Esto%20Es%20Lo%20Que%20Esta%20/800/450" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+      </div>
+
+      <div class="photo-credit">Foto: &copy;Koreaboo</div>
+
+      <div class="article-body">
+        <div class="editorial-intro">Esto Es Lo Que se mantienen en el centro de la conversacion del K-Pop con una novedad que ha generado gran expectativa. En ALBA te contamos todos los detalles.</div>
+        <p>El K-Pop en America Latina no es una moda pasajera, y Esto Es Lo Que son prueba viviente de ello. Con cada nuevo proyecto, el grupo refuerza los lazos culturales entre Corea y la comunidad hispanohablante, creando un puente musical que une dos mundos aparentemente distantes.</p>
+        <p>En el competitivo paisaje del K-Pop, Esto Es Lo Que han logrado diferenciarse con una identidad artistica unica. Su sonido, su estetica visual y su forma de conectar con la audiencia los posicionan como uno de los actos mas completos de la industria actual.</p>
+        <p>La trayectoria de Esto Es Lo Que ha estado marcada por una constante evolucion que los mantiene relevantes en una industria que cambia a velocidad vertiginosa. Este ultimo movimiento demuestra una vez mas su capacidad para sorprender y emocionar.</p>
+        <p>La reaccion de los fans ha sido inmediata y apasionada. En redes sociales, las conversaciones sobre Esto Es Lo Que dominan las tendencias, con la comunidad latina aportando perspectivas unicas y contenido creativo que enriquece la experiencia colectiva del fandom.</p>
+        <p>Desde la perspectiva de la industria musical, las acciones de Esto Es Lo Que reflejan una estrategia inteligente que combina autenticidad artistica con una comprension profunda de lo que su audiencia global necesita y desea.</p>
+        <p>Las reacciones en redes sociales han sido inmediatas y masivas. El hashtag relacionado con Esto Es Lo Que se posiciono como tendencia mundial en cuestion de minutos, impulsado en gran medida por los fans latinoamericanos que demostraron, una vez mas, su capacidad organizativa y su pasion incondicional.</p>
+        <p>El ecosistema fan de Esto Es Lo Que es uno de los mas organizados y creativos del K-Pop. Desde proyectos de streaming coordinados hasta eventos de apoyo social, el fandom demuestra que la pasion por la musica puede canalizarse en acciones positivas que trascienden el entretenimiento.</p>
+        <p>Los fans latinoamericanos de Esto Es Lo Que organizaron watch parties virtuales y presenciales para compartir la experiencia en comunidad. Estos eventos demuestran que el K-Pop en la region va mas alla del consumo individual: es una experiencia social y comunitaria.</p>
+        <p>La comunidad fan hispanohablante no tardo en responder. Desde Mexico hasta Argentina, desde Colombia hasta Espana, los fans de Esto Es Lo Que inundaron las redes con mensajes de apoyo, analisis detallados y contenido creativo que demuestra el nivel de compromiso de la base de fans latina.</p>
+        <p>Lo que Esto Es Lo Que representan para el K-Pop global es significativo. En un momento donde la industria busca expandirse a nuevos mercados, el exito de Esto Es Lo Que en America Latina sirve como modelo para otros artistas que aspiran a conectar con la audiencia hispanohablante.</p>
+        <div class="editorial-closing">La historia de Esto Es Lo Que sigue escribiendose, y ALBA esta aqui para contartela en espanol. No te pierdas nuestras actualizaciones.</div>
+      </div>
+
+      <div class="source-attribution">
+          Fuente: <a href="https://www.koreaboo.com/news/bts-arirang-sweep-positions-spotify-global-chart/" target="_blank" rel="noopener noreferrer">Koreaboo</a>
+          <br><a href="https://www.koreaboo.com/news/bts-arirang-sweep-positions-spotify-global-chart/" target="_blank" rel="noopener noreferrer" class="read-original">Leer articulo original &rarr;</a>
+        </div>
+
+    </div>
+
+    <!-- Related Articles -->
+    <div class="article-container">
+      <div class="related-section">
+        <h2 class="related-title">Tambien te puede interesar</h2>
+        <div class="related-grid">
+          
+          <a href="../articles/article-007.html" class="related-card">
+            <div class="thumb">
+              <img src="https://picsum.photos/seed/alba-3-8503/800/450" alt="RM Regresan con Todo: Lo Que Sabemos de Su Comeback" width="400" height="225" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/RM%20Regresan%20con%20Todo/400/225" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            </div>
+            <div class="related-body">
+              <div class="related-category">MUSICA</div>
+              <h3>RM Regresan con Todo: Lo Que Sabemos de Su Comeback</h3>
+              <span class="date">20 de marzo de 2026</span>
+            </div>
+          </a>
+          <a href="../articles/article-015.html" class="related-card">
+            <div class="thumb">
+              <img src="https://picsum.photos/seed/alba-11-8503/800/450" alt="ALBA Seleccion: Lo Mejor de la Semana en K-Pop" width="400" height="225" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/ALBA%20Seleccion%3A%20Lo%20M/400/225" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            </div>
+            <div class="related-body">
+              <div class="related-category">MUSICA</div>
+              <h3>ALBA Seleccion: Lo Mejor de la Semana en K-Pop</h3>
+              <span class="date">13 de marzo de 2026</span>
+            </div>
+          </a>
+          <a href="../articles/article-014.html" class="related-card">
+            <div class="thumb">
+              <img src="https://picsum.photos/seed/alba-10-8503/800/450" alt="ALBA Te Cuenta: Las Novedades del K-Pop" width="400" height="225" loading="lazy" referrerpolicy="no-referrer" data-fallback="https://picsum.photos/seed/ALBA%20Te%20Cuenta%3A%20Las%20/400/225" onerror="if(!this.dataset.failed){this.dataset.failed='1';this.src=this.dataset.fallback}">
+            </div>
+            <div class="related-body">
+              <div class="related-category">MUSICA</div>
+              <h3>ALBA Te Cuenta: Las Novedades del K-Pop</h3>
+              <span class="date">14 de marzo de 2026</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-logo">ALBA</div>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><iconify-icon icon="solar:instagram-bold" width="20"></iconify-icon></a>
+          <a href="#" aria-label="X"><iconify-icon icon="solar:letter-bold" width="20"></iconify-icon></a>
+          <a href="#" aria-label="YouTube"><iconify-icon icon="solar:play-circle-bold" width="20"></iconify-icon></a>
+          <a href="#" aria-label="TikTok"><iconify-icon icon="solar:music-note-2-bold" width="20"></iconify-icon></a>
+        </div>
+      </div>
+      <p class="footer-copy">&copy; 2026 ALBA Magazine. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const hbtn = document.querySelector('.hamburger');
+    const nlinks = document.querySelector('.nav-links');
+    if (hbtn && nlinks) {
+      hbtn.addEventListener('click', () => nlinks.classList.toggle('active'));
+    }
+  </script>
+
+</body>
+</html>
