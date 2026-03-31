@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revoluci&oacute;n Tech en el K-Pop: Nuevo Sistema de Asistencia con IA para Trainees | ALBA</title>
+  <meta name="description" content="Descubre c&oacute;mo las agencias K-Pop est&aacute;n implementando sistemas de inteligencia artificial para gestionar la asistencia de trainees, revolucionando el entrenamiento con tecnolog&iacute;a de vanguardia.">
+  <meta property="og:title" content="Revoluci&oacute;n Tech en el K-Pop: Nuevo Sistema de Asistencia con IA para Trainees | ALBA">
+  <meta property="og:image" content="https://picsum.photos/seed/alba-ai-trainee/1200/675">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            headline: ['Oswald', 'system-ui', 'sans-serif'],
+            body: ['Poppins', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            alba: {
+              amber: '#f5a623',
+              red: '#e74c3c',
+              purple: '#9b59b6',
+              green: '#2ecc71',
+              blue: '#3498db',
+              text: '#2d2d2d',
+              meta: '#888888',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #333;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: #2d2d2d; text-decoration: none; transition: color 0.25s ease; }
+    a:hover { color: #f5a623; }
+    img { display: block; width: 100%; height: auto; object-fit: cover; }
+    ul, ol { list-style: none; }
+
+    /* ===== AMBER TOP LINE ===== */
+    .amber-topline { height: 4px; background: linear-gradient(90deg, #f5a623 0%, #e74c3c 50%, #f5a623 100%); }
+
+    /* ===== NAVIGATION ===== */
+    .site-nav {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .site-nav .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .site-logo {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: 0.12em;
+      color: #f5a623;
+      text-transform: uppercase;
+    }
+
+    .site-logo a { color: #f5a623; }
+    .site-logo a:hover { color: #e8951a; }
+
+    .nav-links { display: flex; align-items: center; gap: 0; }
+
+    .nav-links a {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 20px 18px;
+      color: #2d2d2d;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 18px;
+      right: 18px;
+      height: 3px;
+      background: #f5a623;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a:hover { color: #f5a623; }
+
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #2d2d2d; transition: transform 0.3s; }
+
+    /* ===== ARTICLE CONTAINER ===== */
+    .article-container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== BACK LINK ===== */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #888;
+      margin: 24px 0 12px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #f5a623; }
+
+    /* ===== ARTICLE HEADER ===== */
+    .article-header { margin-bottom: 32px; }
+
+    .article-category-badge {
+      display: inline-block;
+      color: #fff;
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 16px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+
+    .badge-musica { background: #e74c3c; }
+    .badge-estilo { background: #9b59b6; }
+    .badge-cultura { background: #2ecc71; }
+    .badge-envivo { background: #3498db; }
+    .badge-default { background: #f5a623; }
+
+    .article-title {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: #2d2d2d;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      color: #888;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .article-meta .meta-divider {
+      width: 4px;
+      height: 4px;
+      background: #ccc;
+      border-radius: 50%;
+    }
+
+    /* ===== HERO IMAGE ===== */
+    .article-hero {
+      margin: 24px 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .article-hero img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    /* ===== ARTICLE BODY ===== */
+    .article-body {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .article-body p {
+      margin-bottom: 20px;
+    }
+
+    .editorial-intro {
+      font-size: 18px;
+      line-height: 1.75;
+      color: #2d2d2d;
+      font-weight: 500;
+      border-left: 4px solid #f5a623;
+      padding-left: 20px;
+      margin-bottom: 28px;
+    }
+
+    .editorial-closing {
+      font-size: 16px;
+      font-style: italic;
+      color: #555;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+      margin-top: 28px;
+    }
+
+    .article-inline-image {
+      margin: 28px 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .article-inline-image img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    .article-body blockquote {
+      border-left: 4px solid #f5a623;
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: #fffaf0;
+      border-radius: 0 6px 6px 0;
+      font-style: italic;
+      color: #555;
+    }
+
+    .article-body a {
+      color: #f5a623;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .article-body a:hover { color: #e8951a; }
+
+    /* ===== SOURCE ATTRIBUTION ===== */
+    .source-attribution {
+      margin: 32px 0;
+      padding: 20px;
+      background: #fafafa;
+      border-radius: 8px;
+      border-left: 4px solid #f5a623;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .source-attribution a { color: #f5a623; font-weight: 500; }
+    .source-attribution a:hover { color: #e8951a; }
+
+    .read-original {
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    /* ===== PHOTO CREDIT ===== */
+    .photo-credit {
+      font-size: 12px;
+      color: #aaa;
+      text-align: right;
+      margin-top: 8px;
+    }
+
+    /* ===== RELATED ARTICLES ===== */
+    .related-section {
+      margin: 48px 0;
+      padding-top: 32px;
+      border-top: 2px solid #f5a623;
+    }
+
+    .related-title {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+      color: #2d2d2d;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .related-card {
+      display: block;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #f0f0f0;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .related-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .related-card .thumb { aspect-ratio: 16/9; overflow: hidden; }
+    .related-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    .related-card .related-body { padding: 14px; }
+
+    .related-card .related-category {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #f5a623;
+      margin-bottom: 6px;
+    }
+
+    .related-card h3 {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      line-height: 1.35;
+      color: #2d2d2d;
+      margin-bottom: 6px;
+    }
+
+    .related-card .date { font-size: 12px; color: #888; }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: #1a1a1a;
+      color: #aaa;
+      padding: 48px 0 32px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 32px;
+      border-bottom: 2px solid #f5a623;
+      margin-bottom: 24px;
+    }
+
+    .footer-logo {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      color: #f5a623;
+      letter-spacing: 0.12em;
+    }
+
+    .footer-social { display: flex; gap: 16px; }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      transition: all 0.3s;
+    }
+
+    .footer-social a:hover { border-color: #f5a623; color: #f5a623; }
+
+    .footer-copy { font-size: 12px; color: #666; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .article-title { font-size: 24px; }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-top { flex-direction: column; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Amber Top Line -->
+  <div class="amber-topline"></div>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <div class="site-logo"><a href="../index.html">ALBA</a></div>
+      <div class="nav-links">
+        <a href="../index.html#musica">M&uacute;sica</a>
+        <a href="../index.html#estilo">Estilo</a>
+        <a href="../index.html#cultura">Cultura</a>
+        <a href="../index.html#envivo">En Vivo</a>
+      </div>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Article Content -->
+  <article>
+    <div class="article-container">
+
+      <a href="../index.html" class="back-link">
+        <iconify-icon icon="solar:arrow-left-linear" width="16"></iconify-icon>
+        Volver a ALBA
+      </a>
+
+      <div class="article-header">
+        <span class="article-category-badge badge-default">TECH</span>
+        <h1 class="article-title">Revoluci&oacute;n Tech en el K-Pop: Nuevo Sistema de Asistencia con IA para Trainees</h1>
+        <div class="article-meta">
+          <span>2026-04-01</span>
+          <span class="meta-divider"></span>
+          <span>ALBA Redaccion</span>
+        </div>
+      </div>
+
+      <div class="article-hero">
+        <img src="https://picsum.photos/seed/alba-ai-trainee/1200/675" alt="Sistema AI K-Pop" width="1200" height="675" loading="eager" referrerpolicy="no-referrer">
+      </div>
+
+      <div class="photo-credit">Foto: &copy;ALBA</div>
+
+      <div class="article-body">
+        <div class="editorial-intro">
+          La industria del K-Pop da un salto al futuro: las agencias de entretenimiento surcoreanas est&aacute;n implementando sistemas de inteligencia artificial para gestionar la asistencia y el rendimiento de sus trainees. Una revoluci&oacute;n silenciosa que est&aacute; transformando c&oacute;mo se forman los futuros &iacute;dolos.
+        </div>
+
+        <p>Si alguna vez te preguntaste c&oacute;mo es el d&iacute;a a d&iacute;a de un trainee de K-Pop, prep&aacute;rate para descubrir que la tecnolog&iacute;a est&aacute; cambiando las reglas del juego. Las agencias de entretenimiento en Corea del Sur han comenzado a desplegar un sofisticado sistema de gesti&oacute;n de asistencia basado en inteligencia artificial que monitorea cada clase, cada sesi&oacute;n de pr&aacute;ctica y cada ausencia de sus j&oacute;venes artistas en formaci&oacute;n. Ya no se trata de listas en papel o llamadas telef&oacute;nicas: estamos hablando de bases de datos inteligentes que procesan informaci&oacute;n en tiempo real.</p>
+
+        <p>El coraz&oacute;n del sistema radica en una arquitectura de datos que organiza las clases a trav&eacute;s de una tabla llamada <em>lessons</em>, donde cada sesi&oacute;n se programa con fecha, horario, instructor asignado y una rotaci&oacute;n autom&aacute;tica de grupos A y B. Este mecanismo de rotaci&oacute;n permite que los trainees reciban entrenamiento en grupos reducidos, alternando entre coreograf&iacute;a, vocal, actuaci&oacute;n y otras disciplinas sin saturar las salas de pr&aacute;ctica. Los instructores se asignan din&aacute;micamente seg&uacute;n su especialidad y disponibilidad, lo que garantiza una experiencia de aprendizaje &oacute;ptima para cada grupo.</p>
+
+        <p>Pero la verdadera magia ocurre en la tabla de <em>attendance</em>, donde el sistema registra el estado de cada trainee con precisi&oacute;n quir&uacute;rgica. Los estados posibles son cuatro: presente, ausente, tarde y excusa justificada. Cada registro consume autom&aacute;ticamente una sesi&oacute;n del plan contratado por el trainee, y cuando se detectan patrones preocupantes &mdash;como tres ausencias consecutivas sin justificaci&oacute;n&mdash; el sistema genera advertencias autom&aacute;ticas tanto para el trainee como para sus mentores. Es como tener un tutor virtual que nunca duerme y que siempre est&aacute; pendiente de que nadie se quede atr&aacute;s.</p>
+
+        <p>Uno de los aspectos m&aacute;s fascinantes es el sistema de planes escalonados que gestiona la tabla de <em>students</em>. Existen cuatro niveles: Start, Basic, Standard y Premium. El plan Start ofrece cuatro sesiones mensuales, ideal para quienes reci&eacute;n comienzan su camino como trainees. El Basic sube a ocho sesiones, permitiendo una dedicaci&oacute;n m&aacute;s seria. El Standard, con doce sesiones, est&aacute; dise&ntilde;ado para trainees comprometidos que buscan avanzar r&aacute;pidamente. Y el Premium ofrece acceso ilimitado a todas las clases disponibles, reservado para aquellos en la recta final antes de su debut. Cada plan determina no solo la cantidad de sesiones, sino tambi&eacute;n el acceso a instructores especializados y salas de pr&aacute;ctica prioritarias.</p>
+
+        <p>Para la comunidad latina de fans del K-Pop, este sistema ofrece una ventana sin precedentes al mundo del entrenamiento de &iacute;dolos. Durante a&ntilde;os, los fans de Am&eacute;rica Latina han seguido con pasi&oacute;n cada paso de sus artistas favoritos, desde los programas de supervivencia hasta los documentales detr&aacute;s de c&aacute;maras. Ahora, comprender la estructura t&eacute;cnica detr&aacute;s del entrenamiento permite apreciar a&uacute;n m&aacute;s el sacrificio y la disciplina que implica convertirse en un &iacute;dolo. Las reacciones en redes sociales de la comunidad hispanohablante han sido ef&uacute;sivas: desde M&eacute;xico hasta Argentina, los fans celebran que la tecnolog&iacute;a est&eacute; al servicio de hacer m&aacute;s transparente y justo el proceso de formaci&oacute;n.</p>
+
+        <p>El mecanismo de advertencias autom&aacute;ticas ha generado un debate interesante entre los fans latinos. Algunos lo ven como una herramienta que protege a los trainees de ser evaluados injustamente, ya que el sistema distingue claramente entre una ausencia injustificada y una excusa m&eacute;dica v&aacute;lida. Otros expresan cierta preocupaci&oacute;n por la presi&oacute;n adicional que puede generar un seguimiento tan detallado. Sin embargo, la mayor&iacute;a coincide en que la automatizaci&oacute;n elimina los favoritismos y las decisiones arbitrarias que hist&oacute;ricamente han plagado la industria, creando un campo de juego m&aacute;s equitativo para todos los aspirantes.</p>
+
+        <p>La implementaci&oacute;n de los grupos A y B tambi&eacute;n ha capturado la atenci&oacute;n de los fans, quienes comparan el sistema con las din&aacute;micas de competencia que se ven en programas como Produce 101 o I-Land. La rotaci&oacute;n sistem&aacute;tica asegura que ning&uacute;n trainee sea relegado permanentemente a un grupo de menor intensidad, y que todos reciban la misma calidad de instrucci&oacute;n a lo largo del mes. Los instructores, registrados en el sistema con sus especialidades, pueden ser asignados estrat&eacute;gicamente para maximizar el potencial de cada grupo en cada sesi&oacute;n.</p>
+
+        <blockquote>
+          &ldquo;Este sistema representa el futuro del K-Pop. La tecnolog&iacute;a no reemplaza el talento ni el esfuerzo, pero s&iacute; garantiza que cada trainee reciba exactamente lo que necesita para brillar.&rdquo;
+        </blockquote>
+
+        <div class="editorial-closing">
+          La convergencia entre inteligencia artificial y la formaci&oacute;n de &iacute;dolos es solo el comienzo. A medida que estos sistemas se perfeccionen, es probable que veamos una nueva generaci&oacute;n de artistas entrenados con mayor precisi&oacute;n, mayor justicia y mayor transparencia. Para los millones de fans latinos que sue&ntilde;an con ver a sus favoritos triunfar, esta revoluci&oacute;n tecnol&oacute;gica es una promesa de que el talento, y no la suerte, ser&aacute; lo que determine qui&eacute;n llega al escenario.
+        </div>
+      </div>
+
+      <div class="source-attribution">Reportaje original de ALBA Staff</div>
+
+    </div>
+
+    <!-- Related Articles -->
+    <div class="article-container">
+      <div class="related-section">
+        <h2 class="related-title">Tambi&eacute;n te puede interesar</h2>
+        <div class="related-grid">
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-logo">ALBA</div>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><iconify-icon icon="solar:instagram-bold" width="20"></iconify-icon></a>
+          <a href="#" aria-label="X"><iconify-icon icon="solar:letter-bold" width="20"></iconify-icon></a>
+          <a href="#" aria-label="YouTube"><iconify-icon icon="solar:play-circle-bold" width="20"></iconify-icon></a>
+          <a href="#" aria-label="TikTok"><iconify-icon icon="solar:music-note-2-bold" width="20"></iconify-icon></a>
+        </div>
+      </div>
+      <p class="footer-copy">&copy; 2026 ALBA Magazine. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const hbtn = document.querySelector('.hamburger');
+    const nlinks = document.querySelector('.nav-links');
+    if (hbtn && nlinks) {
+      hbtn.addEventListener('click', () => nlinks.classList.toggle('active'));
+    }
+  </script>
+
+</body>
+</html>
