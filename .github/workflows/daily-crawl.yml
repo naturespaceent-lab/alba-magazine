@@ -1,7 +1,7 @@
 name: Daily Crawl
 on:
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 4 * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -32,3 +32,8 @@ jobs:
           git add -A index.html articles/ images/ _headers
           git diff --staged --quiet || git commit -m "chore: daily crawl $(date +%Y-%m-%d)"
           git push
+      - name: Deploy to Firebase
+        continue-on-error: true
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: npx firebase-tools deploy --only hosting --token $FIREBASE_TOKEN
